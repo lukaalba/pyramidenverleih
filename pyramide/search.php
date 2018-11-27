@@ -7,10 +7,13 @@
 
 require_once ('DBkonfiguration.php');
 $req = $_REQUEST['rq'];
+require('header.php');?>
+<script>document.getElementById("SuchLeiste").value ="<?php echo $req;?>";</script>
+<?php
 $req = str_replace('ö', 'o', $req );
 $req = str_replace('ä', 'a', $req );
 $req = str_replace('ü', 'u', $req );
-require('header.php');
+
 try {
 
 
@@ -37,7 +40,7 @@ $i = 0;
 
 
  ?>
-
+ 
  <div class="ergebnis"><table>
    <link href="search.css" rel="stylesheet" type="text/css"/>
      <tr>

@@ -12,7 +12,7 @@
         <header>
             <div id="SuchHeader">
                 <img src="images/PyramidenVerleihIcon.png" id="icon" onclick="window.location.replace('index.php')" onmouseover="changeMouse(this.id)">
-                <input id="SuchLeiste" placeholder="Suche..." onkeyup="show_reco(this.value)" />
+                <input id="SuchLeiste" placeholder="Suche..." onkeyup="show_reco(this.value)" onkeydown="search_with_return()" />
                 <div class="headerButton" id="RegistrierenButton" onmouseover="changeMouse(this.id)">
                     <div class="ButtonText">Registrieren</div>
                 </div>

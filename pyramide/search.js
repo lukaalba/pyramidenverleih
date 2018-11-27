@@ -4,17 +4,22 @@
 # | 1.0     |25.11.18 | Albani           | Neuerstellung
 */
 
+
+function search_with_return() {
+
+    var input = document.getElementById("SuchLeiste");
+    input.addEventListener("keyup", function(event)
+    {
+       if (event.keyCode == 13)
+    {
+       search(input.value);
+    }
+    });
+}
+
 // Ajax
 function show_reco(str) {
 
-  var input = document.getElementById("SuchLeiste");
-  input.addEventListener("keyup", function(event)
-  {
-    if (event.keyCode == 13)
-    {
-      search(input.value);
-    }
-  });
       if (str.length == 0) {
         document.getElementById("txtreco").innerHTML = "";
         document.getElementById("txtreco").style.display = "none";

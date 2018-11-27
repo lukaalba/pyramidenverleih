@@ -12,6 +12,7 @@
         <header>
             <div id="SuchHeader">
                 <img src="images/PyramidenVerleihIcon.png" id="icon" onclick="window.location.replace('index.php')" onmouseover="changeMouse(this.id)">
+                <div id="KatButton" onmouseover="changeMouse(this.id)" onclick="show_kat('')">Kategorie</div>
                 <input id="SuchLeiste" placeholder="Suche..." onkeyup="show_reco(this.value)" onkeydown="search_with_return()" />
                 <div class="headerButton" id="RegistrierenButton" onmouseover="changeMouse(this.id)">
                     <div class="ButtonText">Registrieren</div>
@@ -20,7 +21,8 @@
                     <div class="ButtonText">Anmelden</div>
                 </div>
             </div>
-            <div id ="txtreco"></div>
+            <div id = "Katreco" onmouseleave="destroy_innerhtml('Katreco')"></div>
+            <div id ="txtreco" onmouseleave="destroy_innerhtml(this.id)"></div>
             <div id="KategorieHeader">
                 <a href="index.php"><div class="tab" id="HomeTab" onmouseover="changeMouse(this.id)">Home</div></a>
                 <a href="produkte.php"><div class="tab" id="ProdukteTab" onmouseover="changeMouse(this.id)">Produkte</div></a>

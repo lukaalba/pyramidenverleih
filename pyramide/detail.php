@@ -4,9 +4,6 @@ require('header.php');
 require_once ('DBkonfiguration.php');
 $que = $_REQUEST['id'];
 
-# Stellt Verbindung zur Datenbank her
-$dbconn = new PDO('mysql:host='. MYSQL_HOST . ';dbname=' . MYSQL_DATENBANK, MYSQL_BENUTZER, MYSQL_KENNWORT);
-
 $sql = $dbconn->prepare("SELECT * FROM Produkte WHERE ID = $que");
 
 $sql->execute();
@@ -14,7 +11,7 @@ $i = 0;
  while ($result= $sql->fetch(PDO::FETCH_ASSOC)) {
  ?>
  <link href="detail.css" rel="stylesheet" type="text/css">
- <script>document.getElementById("SuchLeiste").value ="<?php echo $result['Bezeichnung'];?>";</script>
+  <script>document.getElementById("SuchLeiste").value ="<?php echo $result['Bezeichnung'];?>";</script>
  <div class="ergebnis"><table>
      <tr>
        <td id="img"><img width="500" height="500" src="image.php?id=<?php echo $result['ID'];?>"></td>

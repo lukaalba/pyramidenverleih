@@ -2,33 +2,31 @@
 # | Version | Datum   | Autor            | Bemerkung
 # |_________|_________|__________________|_________________
 # | 1.0     |25.11.18 | Albani           | Neuerstellung
+
 --->
 <?php
 
 require_once ('DBkonfiguration.php');
 $req = $_REQUEST['rq'];
-require('header.php');?>
-<script>document.getElementById("SuchLeiste").value ="<?php echo $req;?>";</script>
-<?php
+
 $req = str_replace('ö', 'o', $req );
 $req = str_replace('ä', 'a', $req );
 $req = str_replace('ü', 'u', $req );
 
-try {
+$cond = explode("-", $req);
 
-
-# Stellt Verbindung zur Datenbank her
-$dbconn = new PDO('mysql:host='. MYSQL_HOST . ';dbname=' . MYSQL_DATENBANK, MYSQL_BENUTZER, MYSQL_KENNWORT);
-
-} catch  (PDOException $e) {
-  print  "Error!: " . $e->getMessage() . "<br />";
-
-#exit
-  die();
+If ($cond[1] == "Kategorie")
+{
+  $cond[1] = "%";
 }
 
+require('header.php');?>
+
+<script>document.getElementById("SuchLeiste").value ="<?php echo $cond[0];?>";</script>
+
+<?php
 #Select Statement
-$query = $dbconn->prepare("SELECT * FROM Produkte WHERE Bezeichnung LIKE '$req%'");
+$query = $dbconn->prepare("SELECT * FROM Produkte WHERE Bezeichnung LIKE '$cond[0]%' AND Typ LIKE '$cond[1]'");
 ?> <h2>Suchergebnisse</h2><?php
 
 # Führt das Select Statement aus
@@ -40,7 +38,7 @@ $i = 0;
 
 
  ?>
- 
+
  <div class="ergebnis"><table>
    <link href="search.css" rel="stylesheet" type="text/css"/>
      <tr>

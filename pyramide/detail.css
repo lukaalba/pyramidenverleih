@@ -1,0 +1,22 @@
+h1 {
+  color: red;
+  text-align: center;
+  margin-top:-200px;
+}
+
+.ergebnis {
+  width: 100%;
+}
+
+.ergebnis table {
+  width: 100%;
+  border: 1px solid;
+}
+.ergebnis table td {
+  border: 1px solid;
+  width: 50%;
+}
+#preis {
+
+  text-align: center;
+}

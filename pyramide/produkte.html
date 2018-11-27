@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Cheops GmbH - Produkte</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" charset="utf-16">
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <link href="produkte.css" rel="stylesheet" type="text/css"/>
+        <script src="script.js"></script>
+        <script src="search.js"></script>
+    </head>
+    <body>
+        <header>
+            <div id="SuchHeader">
+                <img src="images/PyramidenVerleihIcon.png" id="icon" onclick="window.location.replace('index.html')" onmouseover="changeMouse(this.id)">
+                <input id="SuchLeiste" placeholder="Suche..." type="search" onkeyup="show_reco(this.value)">
+                <div class="headerButton" id="RegistrierenButton" onmouseover="changeMouse(this.id)">
+                    <div class="ButtonText">Registrieren</div>
+                </div>
+                <div class="headerButton" id="AnmeldenButton" onmouseover="changeMouse(this.id)">
+                    <div class="ButtonText">Anmelden</div>
+                </div>
+            </div>
+            <div id ="txtreco"></div>
+            <div id="KategorieHeader">
+                <a href="index.html"><div class="tab" id="HomeTab" onmouseover="changeMouse(this.id)">Home</div></a>
+                <div class="tab activeTab" id="ProdukteTab" onmouseover="changeMouse(this.id)">Produkte</div>
+                <a href="sonderangebote.html"><div class="tab" id="SonderangeboteTab" onmouseover="changeMouse(this.id)">Sonderangebote</div></a>
+                <a href="kontakt.html"><div class="tab" id="KontaktTab" onmouseover="changeMouse(this.id)">Kontakt</div></a>
+            </div>
+        </header>
+
+        <!-- Box, um den Seiteninhalt unter die Kopfzeile zu schieben -->
+        <div id="spacingBoxTop"></div>
+
+        <h1>PRODUKTE!</h1>
+
+        <!-- Box, um Platz für den Footer zu schaffen -->
+        <div id="spacingBoxBottom"></div>
+
+        <footer>
+            <br/>
+            <ul>
+                <li>AGB</li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li>&copy; 2018 Cheops GmbH</li>
+            </ul>
+            <br/><br/>
+        </footer>
+    </body>
+</html>

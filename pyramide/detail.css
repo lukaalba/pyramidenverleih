@@ -1,22 +1,84 @@
+/*
+
+# CSS für Detailseite detail.php
+# | Version |Datum      |Autor            | Bemerkung
+# |_________|___________|_________________|_________________
+# | 1.0     |25.11.2018 |Albani           | Neuerstellung
+# | 1.1     |03.12.2018 |Albani           | Layout konfiguriert, Bilder konfiguriert
+
+  */
+
+
 h1 {
-  color: red;
+  color: black;
+  text-align: left;
+  margin-top: 0;
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  top: 150px;
+  width: 40%;
+
+}
+.prodtext {
+  width: 33%;
+  position: absolute;
+  margin-left: 42%;
+  top: 150px;
+}
+
+.preisinfo {
+  position: absolute;
+  float: right;
+  margin-left: 75%;
+  top: 150px;
+  width: 25%;
+  border: 1px solid;
+  background-color: lightgrey;
   text-align: center;
-  margin-top:-200px;
+  font-size: 1.5em;
+  min-height: 400px;
 }
 
-.ergebnis {
-  width: 100%;
-}
-
-.ergebnis table {
-  width: 100%;
-  border: 1px solid;
-}
-.ergebnis table td {
-  border: 1px solid;
-  width: 50%;
-}
 #preis {
-
   text-align: center;
+}
+
+.image img {
+  width: 70px;
+  height: 70px;
+  margin-left: 15px;
+  margin-top: 15px;
+  display: inline;
+}
+
+.image img:hover {
+  border: 3px solid;
+  border-color: #D0962A;
+}
+
+#active {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+#active:hover {
+  border: none;
+}
+
+#werbetext {
+  font-size: 0.75em;
+}
+
+#BestellButton {
+  border: 1px solid;
+  margin-left:10%;
+  margin-right: 10%;
+  background-color:#D0962A;
+  border-radius: 5px;
 }

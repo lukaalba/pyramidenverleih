@@ -7,6 +7,8 @@
 <?php
 
 require_once ('DBkonfiguration.php');
+global $dbconn;
+include('image.php');
 $req = $_REQUEST['rq'];
 
 $req = str_replace('ö', 'o', $req );
@@ -35,14 +37,12 @@ $sql->execute();
 $i = 0;
  while ($result= $sql->fetch(PDO::FETCH_ASSOC)) {
   $i++;
-
-
  ?>
 
  <div class="ergebnis"><table>
    <link href="search.css" rel="stylesheet" type="text/css"/>
      <tr>
-       <td class="img"><img width="300" height="300" src="image.php?id=<?php echo $result['ID'];?>"></td>
+       <td class="img"><?php getImage($result['ID'], 1)?></td>
        <td class="prodtext" onclick="window.location.replace('detail.php?id=<?php echo $result['ID']; ?>')"><b>Name: <?php print utf8_encode($result['Bezeichnung']);?></b><br />
        Größe: <?php print $result['Groesse'];?><br />
        Versand: <?php print $result['Versand'];?><br />

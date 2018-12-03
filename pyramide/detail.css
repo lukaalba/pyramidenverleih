@@ -7,8 +7,6 @@
 # | 1.1     |03.12.2018 |Albani           | Layout konfiguriert, Bilder konfiguriert
 
   */
-
-
 h1 {
   color: black;
   text-align: left;
@@ -20,8 +18,8 @@ h1 {
   left: 0;
   top: 150px;
   width: 40%;
-
 }
+
 .prodtext {
   width: 33%;
   position: absolute;
@@ -77,8 +75,8 @@ h1 {
 
 #BestellButton {
   border: 1px solid;
-  margin-left:10%;
+  margin-left: 10%;
   margin-right: 10%;
-  background-color:#D0962A;
+  background-color: #D0962A;
   border-radius: 5px;
 }

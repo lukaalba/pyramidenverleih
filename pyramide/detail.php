@@ -16,16 +16,17 @@ $sql->execute();
 $i = 0;
  while ($result= $sql->fetch(PDO::FETCH_ASSOC)) {
  ?>
-<link href="detail.css" rel="stylesheet" type="text/css">
-<script src="detail.js"></script>
-<script>
-document.getElementById("SuchLeiste").value ="<?php echo $result['Bezeichnung'];?>";
-</script>
-       <div class="image" id="imageid">
-         <img id="active" src="">
+
+ <link href="detail.css" rel="stylesheet" type="text/css">
+ <script src="detail.js"></script>
+ <script>
+    document.getElementById("SuchLeiste").value ="<?php echo $result['Bezeichnung'];?>";
+  </script>
+  <div class="image" id="imageid">
+    <img id="active" src="">
          <?php getImage($que, 2);
          ?>
-       </div>
+  </div>
        <div class="prodtext">
          <h1><?php print utf8_encode($result['Bezeichnung']);?></h1>
        <p>Größe: <?php print $result['Groesse'];?><br /></p>

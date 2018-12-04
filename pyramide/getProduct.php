@@ -11,11 +11,14 @@
 require_once ('DBkonfiguration.php');
 
 $q = $_REQUEST["q"];
+
 $q = str_replace('ö', 'o', $q ); #Datenbank findet keine Umlaute, daher muss hier manuell Umlaute ersetzt werden
 $q = str_replace('ä', 'a', $q );
 $q = str_replace('ü', 'u', $q );
 $hint = "";
 $i = 0;
+$cond = explode("-", $q);
+
 
 # Bei Öffnen des Kategorie Buttons bleibt $q leer, womit diese Option herausgefiltert werden kann
 if (strlen($q) == 0)
@@ -23,7 +26,7 @@ if (strlen($q) == 0)
 $sql = $dbconn->prepare("SELECT DISTINCT Typ FROM Produkte");
 
 $sql->execute();
-  $ausgabe = "<ul>";
+  $ausgabe = "<ul><li onclick='changeValue(`Alle`)'>Alle</li>";
 
 while ($hint = $sql->fetch(PDO::FETCH_ASSOC)) {
   $i++;
@@ -34,7 +37,11 @@ while ($hint = $sql->fetch(PDO::FETCH_ASSOC)) {
 }
 else { #hier kommt der Ablauf des Suchfeldes
 #Select Statement
-$sql = $dbconn->prepare("SELECT * FROM Produkte WHERE Bezeichnung LIKE '$q%'");
+If ($cond[1] == "Alle")
+{
+  $cond[1] = "%";
+}
+$sql = $dbconn->prepare("SELECT * FROM Produkte WHERE Bezeichnung LIKE '$cond[0]%' AND Typ LIKE '$cond[1]'");
 
 # Führt das Select Statement aus
 $sql->execute();

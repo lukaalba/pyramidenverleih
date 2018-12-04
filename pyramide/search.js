@@ -20,6 +20,7 @@ function search_with_return() {
 // Ajax
 function show_reco(str) {
 
+var kat = document.getElementById("KatButton").innerHTML;
       if (str.length == 0) {
         document.getElementById("txtreco").innerHTML = "";
         document.getElementById("txtreco").style.display = "none";
@@ -35,7 +36,7 @@ function show_reco(str) {
             document.getElementById("txtreco").style.display = "block";
           }
         };
-        xmlhttp.open("GET", "getProduct.php?q=" + str, true);
+        xmlhttp.open("GET", "getProduct.php?q=" + str + "-" + kat, true);
         xmlhttp.send();
         }
       }
@@ -49,7 +50,7 @@ function search(para) {
   }
 }
 
-function show_kat() {
+function show_kat(input) {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200)
@@ -58,7 +59,7 @@ function show_kat() {
       document.getElementById("Katreco").style.display = "block";
     }
   };
-  xmlhttp.open("GET", "getProduct.php?q=", true);
+  xmlhttp.open("GET", "getProduct.php?q=" + input , true);
   xmlhttp.send();
 }
 
@@ -70,7 +71,7 @@ function changeValue(wert) {
  var doc = document.getElementById("KatButton");
 
   if (wert.length == 0) {
-    doc.innerHTML = "Kategorie";
+    doc.innerHTML = "Alle";
   }
   else {
     doc.innerHTML = wert;

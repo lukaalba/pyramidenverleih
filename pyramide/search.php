@@ -17,7 +17,7 @@ $req = str_replace('ü', 'u', $req );
 
 $cond = explode("-", $req);
 
-If ($cond[1] == "Kategorie")
+If ($cond[1] == "Alle")
 {
   $cond[1] = "%";
 }

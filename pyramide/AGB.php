@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Cheops GmbH - Kontakt</title>
+        <title>Cheops GmbH - AGB & Datenschutz</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" charset="utf-16">
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <link href="kontakt.css" rel="stylesheet" type="text/css"/>
@@ -13,7 +13,7 @@
             require('header.php');
         ?>
 
-        <h1>KONTAKT!</h1>
+        <h1>AGB und Datenschutz</h1>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing 
 elit. Aenean commodo ligula eget dolor. Aenean massa 
 <strong>strong</strong>. Cum sociis natoque penatibus 

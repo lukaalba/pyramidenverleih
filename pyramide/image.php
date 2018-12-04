@@ -15,7 +15,7 @@ $i = 0;
 while (($data = $query->fetch(PDO::FETCH_ASSOC)) && ($i < $g))
 {
   $i++;
-  echo "<img src= '" . $data['Pfad'] . "' id='" . $data['ID'] . "'>";
+  echo "<img src= '" . $data['Pfad'] . "' id='" . $i . "'>";
 }
 }
 

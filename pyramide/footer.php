@@ -4,8 +4,8 @@
         <footer>
             <br/>
             <ul>
-                <li>AGB</li>
-                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="AGB.php">AGB & Datenschutz</a></li>
+                <li><a href="kontakt.php">Kontakt</a></li>
                 <li>&copy; 2018 Cheops GmbH</li>
             </ul>
             <br/><br/>

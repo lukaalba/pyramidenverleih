@@ -1,0 +1,45 @@
+#image {
+  left: 0;
+  position: sticky;
+  width:20%;
+}
+#image img {
+  width:100%;
+  height: 100%;
+}
+
+#headline {
+  margin-left: 22%;
+  position: absolute;
+  top: 160px;
+}
+
+input {
+  width: 30%;
+  height: 25px;
+}
+
+#fehlermeldung {
+  margin-left: 60%;
+  color:red;
+  position: absolute;
+}
+
+p, h2 {
+  margin-right: 50%;
+  text-align:right;
+}
+
+#gp {
+  font-size: 2em;
+  color: #D0962A;
+}
+
+#gesamtpreis {
+  border: none;
+  text-align: right;
+  color: #D0962A;
+  font-size: 1em;
+  height: 2em;
+
+}

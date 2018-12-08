@@ -36,8 +36,8 @@ $i = 0;
      <div class="preisinfo">
        <p>Auf Lager</p>
        <p id="werbetext">Bestellen Sie noch heute und erhalten Sie einen Gratis-Skarabäus dazu!</p>
-       <div id="BestellButton" onmouseover="changeMouse(this.id)">Jetzt bestellen</div>
-       <p id="preis">Preis: <?php print $result['Preis'];?> €</p>
+       <div id="BestellButton" onmouseover="changeMouse(this.id)"><a href="bestellung.php?id=<?php echo $result['ID']?>">Jetzt bestellen</a></div>
+       <p id="preis">Preis: <?php print $result['Preis'];?> €/Tag</p>
      </div>
 <script>
 setActive(1);

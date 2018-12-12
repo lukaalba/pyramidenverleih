@@ -58,7 +58,7 @@ if (sqlexec($query) == 0)
   ?> <p>Keine eindeutige Übereinstimmung</p>
   <h2>Suchergebnisse ähnlich Ihres Suchbegriffs</h2>
   <?php
-  $query = $dbconn->prepare("SELECT * FROM Produkte WHERE Bezeichnung LIKE '%$req%'");
+  $query = $dbconn->prepare("SELECT * FROM Produkte WHERE Bezeichnung LIKE '%$cond[0]%'");
 
   if (sqlexec($query) == 0) {?>
     <p>Keine Übereinstimmung mit Artikeln gefunden</p>

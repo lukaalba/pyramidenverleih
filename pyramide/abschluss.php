@@ -1,4 +1,4 @@
-<?
+<?php
 # Fügt Bestellung in Datensatz ein und sendet Bestätigung an Kunden
 # | Version |Datum      |Autor            | Bemerkung
 # |_________|___________|_________________|_________________

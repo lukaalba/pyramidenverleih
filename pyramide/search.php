@@ -43,9 +43,9 @@ $i = 0;
    <link href="search.css" rel="stylesheet" type="text/css"/>
      <tr>
        <td class="img"><?php getImage($result['ID'], 1)?></td>
-       <td class="prodtext" onclick="window.location.replace('detail.php?id=<?php echo $result['ID']; ?>')"><b>Name: <?php print utf8_encode($result['Bezeichnung']);?></b><br />
-       Größe: <?php print $result['Groesse'];?><br />
-       Versand: <?php print $result['Versand'];?><br />
+       <td class="prodtext" onclick="window.location.href ='detail.php?id=<?php echo $result['ID']; ?>'"><b>Name: <?php print utf8_encode($result['Bezeichnung']);?></b><br />
+       Größe: <?php print $result['Groesse'];?> m<br />
+       Versand: <?php print $result['Versand'];?> Sklaven<br />
        <p class="preis">Preis: <?php print $result['Preis'];?> €</p></td></tr></table></div>
 
 <?php
@@ -58,7 +58,7 @@ if (sqlexec($query) == 0)
   ?> <p>Keine eindeutige Übereinstimmung</p>
   <h2>Suchergebnisse ähnlich Ihres Suchbegriffs</h2>
   <?php
-  $query = $dbconn->prepare("SELECT * FROM Produkte WHERE Bezeichnung LIKE '%$cond[0]%'");
+  $query = $dbconn->prepare("SELECT * FROM Produkte WHERE Bezeichnung LIKE '%$req%'");
 
   if (sqlexec($query) == 0) {?>
     <p>Keine Übereinstimmung mit Artikeln gefunden</p>

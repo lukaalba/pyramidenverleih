@@ -1,3 +1,5 @@
+window.onscroll = function() {hideHeader()};
+
 function myFunction() {
     alert("Hello!");
 }
@@ -38,4 +40,12 @@ function showSlides(n) {
 function initializeHeader(title) {
   alert("brumm");
   document.getElementById(title).classList.add("activeTab");
+}
+
+function hideHeader() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById("KategorieHeader").className = "hideHeader";
+  } else {
+    document.getElementById("KategorieHeader").className = "";
+  }
 }

@@ -13,6 +13,7 @@ body {
     box-shadow: 10px 0 10px lightgrey, -10px 0 10px lightgrey;
     position: relative;
     min-height: 100vh;
+    padding-bottom: 3em;
 }
 
 #spacingBoxTop {
@@ -20,7 +21,7 @@ body {
 }
 
 #spacingBoxBottom {
-    height: 4em;
+    height: 2em;
 }
 
 /* Anfang Kopfzeile */
@@ -31,12 +32,13 @@ header {
     height: 8em;
     position: fixed;
     top: 0;
-    z-index: 9;
+    z-index: 2;
 }
 
 #SuchHeader {
     height: 66%;
     background-color: grey;
+    z-index: 100;
 }
 
 #SuchHeader img {
@@ -92,9 +94,14 @@ header {
 }
 
 #KategorieHeader {
+    position: relative;
+    padding-top: 10px;
     height: 34%;
-    background-color: lightgrey;
+    background-color: grey;
+    visibility: visible;
+    z-index: -100;
 }
+
 
 header a {
     color: black;
@@ -102,9 +109,10 @@ header a {
 
 .tab {
     position: absolute;
+    padding-top: 1%;
     width: 20%;
-    height: 34%;
-    top: 66%;
+    height: 100%;
+    top: 0;
     text-align: center;
     font-size: 1.3em;
     border-radius: 1px;
@@ -178,8 +186,8 @@ header a {
   width: 50%;
   margin-top:-20px;
   background-color: white;
-  z-index: 1;
   display: none;
+  z-index: 2;
 }
 
 #suchvor {
@@ -194,6 +202,32 @@ header a {
   background-color: darkgrey;
 }
 
+.hideHeader {
+  animation-name: slideUp;
+  animation-duration: 1s;
+  transform: translateY(-100%);
+  -webkit-animation-name: slideUp;
+  -webkit-animation-duration: 1s;
+  -webkit-transform: translateY(-100%);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%;);
+  }
+}
+
+@-webkit-keyframes slideUp {
+  from {
+    -webkit-transform: translateY(0%);
+  }
+  to {
+    -webkit-transform: translateY(100%;);
+  }
+}
 /* Ende Such-Box */
 
 /* Anfang Fußzeile */
@@ -202,8 +236,9 @@ footer {
     width: 100%;
     background-color: grey;
     color: white;
-    position: absolute;
     bottom: 0;
+    position: absolute;
+    height: 3em;
 }
 
 footer ul {
@@ -212,11 +247,16 @@ footer ul {
 
 footer li {
     display: inline;
-    margin-left: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 footer a {
     color: white;
+}
+
+footer a:visited {
+  text-decoration: none;
 }
 
 

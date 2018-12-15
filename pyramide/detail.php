@@ -29,8 +29,8 @@ $i = 0;
   </div>
        <div class="prodtext">
          <h1><?php print utf8_encode($result['Bezeichnung']);?></h1>
-       <p>Größe: <?php print $result['Groesse'];?><br /></p>
-       <p>Versand: <?php print $result['Versand'];?></p>
+       <p>Größe: <?php print $result['Groesse'];?> m<br /></p>
+       <p>Versand: <?php print $result['Versand'];?> Sklaven</p>
        <p><?php print utf8_encode($result['Beschreibung']);?> </p>
        </div>
      <div class="preisinfo">
@@ -39,6 +39,7 @@ $i = 0;
        <div id="BestellButton" onmouseover="changeMouse(this.id)"><a href="bestellung.php?id=<?php echo $result['ID']?>">Jetzt bestellen</a></div>
        <p id="preis">Preis: <?php print $result['Preis'];?> €/Tag</p>
      </div>
+     <div id="box"></div>
 <script>
 setActive(1);
 setOnClick();

@@ -22,13 +22,11 @@
 }
 
 .ergebnis:hover {
-  box-shadow: 5px 5px #888888;
+  background-color: lightgrey;
+  border-color: #D0962A;
 
 }
-.prodimg {
-  height:80;
-  width: 80;
-}
+
 .preis {
   font-size:1.5em;
   text-align:right;
@@ -36,5 +34,6 @@
 
 .img img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 300px;
 }

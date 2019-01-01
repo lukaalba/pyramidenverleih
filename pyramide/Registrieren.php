@@ -1,6 +1,8 @@
 <?php 
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+$pdo = new PDO('mysql:host=localhost;dbname=pyramidenverleih', 'root', '');
+require('header.php');
+require('footer.php');
 ?>
 <!DOCTYPE html> 
 <html> 

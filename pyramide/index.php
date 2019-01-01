@@ -10,6 +10,7 @@
     </head>
     <body onload="currentSlide(1)">
         <?php
+			session_start();
             require('header.php');
         ?>
 

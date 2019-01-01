@@ -38,7 +38,6 @@ function showSlides(n) {
 }
 
 function initializeHeader(title) {
-  alert("brumm");
   document.getElementById(title).classList.add("activeTab");
 }
 

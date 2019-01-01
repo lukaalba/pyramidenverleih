@@ -15,10 +15,10 @@
                 <div id="KatButton" onmouseover="changeMouse(this.id)" onclick="show_kat('')">Alle</div>
                 <input id="SuchLeiste" placeholder="Suche..." onkeyup="show_reco(this.value)" onkeydown="search_with_return()" />
                 <div class="headerButton" id="RegistrierenButton" onmouseover="changeMouse(this.id)">
-                    <div class="ButtonText">Registrieren</div>
+                    <a href="registrieren.php"><div class="ButtonText">Registrieren</div></a>
                 </div>
                 <div class="headerButton" id="AnmeldenButton" onmouseover="changeMouse(this.id)">
-                    <div class="ButtonText">Anmelden</div>
+                    <a href="login.php"><div class="ButtonText">Anmelden</div></a>
                 </div>
             </div>
             <div id = "Katreco" onmouseleave="destroy_innerhtml('Katreco')"></div>

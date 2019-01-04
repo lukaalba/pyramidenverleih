@@ -9,13 +9,12 @@ require('header.php');
 $pos_id = $_POST['produktid'];
 $kunden_email = $_POST['email'];
 #Überprüfung Kunde
-$search = $dbconn->prepare("SELECT * FROM Kunde WHERE EMail = '$kunden_email'");
+$search = $dbconn->prepare("SELECT * FROM kunde WHERE EMail = '$kunden_email'");
 $search->execute();
 $result = $search->fetch(PDO::FETCH_ASSOC);
 
-if (!isset($result))
+if (strlen($result) == 0)
 {
-
 # Insert Kunde
 $arr_kunde = array('name' => $_POST['name'],
                        'vorname' => $_POST['vorname'],
@@ -25,7 +24,8 @@ $arr_kunde = array('name' => $_POST['name'],
                        'email' => $_POST['email'],
                        'telefon' => $_POST['telefon']
                      );
-$sql_kunde = "INSERT INTO Kunde (Name, Vorname, PLZ, Ort, Strasse, EMail, Telefon) VALUES (:name, :vorname, :plz, :ort, :strasse, :email, :telefon)";
+$sql_kunde = "INSERT INTO Kunde (Name, Vorname, PLZ, Ort, Strasse, EMail, Telefon) 
+VALUES (:name, :vorname, :plz, :ort, :strasse, :email, :telefon)";
 $id_kunde = insert_into_db($sql_kunde, $arr_kunde);
 }
 else

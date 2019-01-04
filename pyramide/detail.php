@@ -24,7 +24,7 @@ $i = 0;
   </script>
   <div class="image" id="imageid">
     <img id="active" src="">
-         <?php getImage($que, 2);
+         <?php getImage($que, 4);
          ?>
   </div>
        <div class="prodtext">

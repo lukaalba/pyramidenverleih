@@ -48,3 +48,4 @@ function hideHeader() {
     document.getElementById("KategorieHeader").className = "";
   }
 }
+    

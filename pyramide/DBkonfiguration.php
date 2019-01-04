@@ -9,10 +9,9 @@
 error_reporting(E_ALL);
 
 //Zum Aufbau der Verbindung zur Datenbank
-//Daten müssen noch hinzugefügt werden, ist lediglich Rohling
 define ( "MYSQL_HOST", "localhost");
 
-//Benutzer für die Datenbank festlegen (auf die DB), Benutzer von XAMPP rausfinden
+//Benutzer für die Datenbank festlegen (auf die DB)
 define ( 'MYSQL_BENUTZER', 'root');
 define ( 'MYSQL_KENNWORT', '');
 

@@ -1,15 +1,15 @@
 <?php 
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=pyramidenverleih', 'root', '');
 require('header.php');
 require('footer.php');
+require_once('DBkonfiguration.php');
 $showFormular = true;
 if(!isset($_SESSION['userid'])) {
 if(isset($_GET['login'])) {
     $email = $_POST['email'];
     $passwort = $_POST['passwort'];
     
-    $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $statement = $dbconn->prepare("SELECT users.id, kunde.email, users.passwort FROM kunde, users WHERE email = :email AND kunde.id = users.kundenid") ;
     $result = $statement->execute(array('email' => $email));
     $user = $statement->fetch();
         
@@ -26,7 +26,8 @@ if(isset($_GET['login'])) {
 else 
 	{
 		echo "Sie sind bereits eingeloggt";
-		$showFormular = false;
+        $showFormular = false;
+
 	}
 ?>
 <!DOCTYPE html> 

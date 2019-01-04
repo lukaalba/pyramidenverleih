@@ -1,8 +1,8 @@
 <?php 
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=pyramidenverleih', 'root', '');
 require('header.php');
 require('footer.php');
+require_once('DBkonfiguration.php');
 ?>
 <!DOCTYPE html> 
 <html> 
@@ -16,11 +16,18 @@ $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden s
  
 if(isset($_GET['register'])) {
     $error = false;
-    $email = $_POST['email'];
+    $arr_kunde = array('name' => $_POST['name'],
+                       'vorname' => $_POST['vorname'],
+                       'plz' => $_POST['plz'],
+                       'ort' => $_POST['ort'],
+                       'strasse' => $_POST['strasse'],
+                       'email' => $_POST['email'],
+                       'telefon' => $_POST['telefon']
+                     );
     $passwort = $_POST['passwort'];
     $passwort2 = $_POST['passwort2'];
   
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if(!filter_var($arr_kunde['email'], FILTER_VALIDATE_EMAIL)) {
         echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
         $error = true;
     }     
@@ -35,25 +42,56 @@ if(isset($_GET['register'])) {
     
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) { 
-        $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $result = $statement->execute(array('email' => $email));
-        $user = $statement->fetch();
+
+        $statement = $dbconn->prepare("SELECT * FROM kunde WHERE email = :email");
+        $result = $statement->execute(array('email' => $arr_kunde['email']));
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
         
         if($user !== false) {
-            echo 'Diese E-Mail-Adresse ist bereits vergeben<br>';
-            $error = true;
-        }    
+            $statement = $dbconn->prepare("SELECT * FROM users WHERE kundenid = :user");
+            $result = $statement->execute(array('user' => $user['ID']));
+            $kunde = $statement->fetch(PDO::FETCH_ASSOC);
+
+            if ($kunde !== false) {
+                echo 'Diese E-Mail-Adresse ist bereits vergeben<br>';
+                $error = true;
+            }
+            else {
+                $arr_kunde += array('id' => $user['ID']);
+                $statement = $dbconn->prepare("UPDATE kunde SET name = :name, vorname = :vorname, plz = :plz, ort = :ort, strasse = :strasse, email = :email, telefon = :telefon WHERE id = :id");
+                $result = $statement->execute($arr_kunde);
+                if (!$result) {
+                    echo 'Entschuldigung. Es gab einen Fehler beim Anlegen Ihres Benutzers. Bitte kontaktieren Sie uns.';
+                    $error = true;
+                } else {
+                $id = $user['ID'];
+                }
+            }
+        }
+     
+        else {
+            $sql_kunde = $dbconn->prepare("INSERT INTO Kunde (Name, Vorname, PLZ, Ort, Strasse, EMail, Telefon) 
+            VALUES (:name, :vorname, :plz, :ort, :strasse, :email, :telefon)");
+            $result = $sql_kunde->execute($arr_kunde);
+            if (!$result) {
+                echo 'Entschuldigung. Es gab einen Fehler beim Anlegen Ihres Benutzers. Bitte kontaktieren Sie uns.';
+                $error = true;
+            }
+            else {
+               $id = $dbconn->lastinsertId();
+            }
+        }
+    
     }
     
     //Keine Fehler, wir können den Nutzer registrieren
     if(!$error) {    
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
         
-        $statement = $pdo->prepare("INSERT INTO users (email, passwort) VALUES (:email, :passwort)");
-        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash));
-        
+        $statement = $dbconn->prepare("INSERT INTO users (kundenid, passwort) VALUES  (:kundenid, :passwort)");
+        $result = $statement->execute(array('kundenid' => $id, 'passwort' => $passwort_hash));
         if($result) {        
-            echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+            echo 'Sie wurden erfolgreich registriert. <a href="login.php">Zum Login</a>';
             $showFormular = false;
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
@@ -63,14 +101,24 @@ if(isset($_GET['register'])) {
  
 if($showFormular) {
 ?>
- 
+<p>Wir freuen uns, dass Sie sich bei uns als Kunde registrieren wollen. Wir benötigen noch ein paar Informationen über Sie und dann kann es schon losgehen!</p>
 <form action="?register=1" method="post">
+Name:<br>
+ <input type="text" size="40" name="name" placeholder="Adenauer" /><br><br>
+Vorname:<br>
+ <input type="text" size="40" placeholder="Konrad" name="vorname"/><br><br>
+Straße & Hausnummer:<br>
+ <input type="text" size="40" placeholder="Am Dom 1" name="strasse" /><br><br>
+PLZ:<br>
+ <input type="text" size="40" placeholder="50676" name="plz" /><br><br>
+Ort:<br>
+ <input type="text" size="40" placeholder="Köln" name="ort" /><br><br>
+Telefon:<br>
+ <input type="text" size="40" placeholder="0800 12345678" name="telefon" /><br><br>
 E-Mail:<br>
-<input type="email" size="40" maxlength="250" name="email"><br><br>
- 
+<input type="email" size="40" placeholder="konrad@adenauer.de" maxlength="250" name="email"><br><br>
 Dein Passwort:<br>
 <input type="password" size="40"  maxlength="250" name="passwort"><br>
- 
 Passwort wiederholen:<br>
 <input type="password" size="40" maxlength="250" name="passwort2"><br><br>
  

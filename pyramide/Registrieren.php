@@ -28,15 +28,15 @@ if(isset($_GET['register'])) {
     $passwort2 = $_POST['passwort2'];
   
     if(!filter_var($arr_kunde['email'], FILTER_VALIDATE_EMAIL)) {
-        echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
+        echo 'Bitte eine gültige E-Mail-Adresse eingeben.<br>';
         $error = true;
     }     
     if(strlen($passwort) == 0) {
-        echo 'Bitte ein Passwort angeben<br>';
+        echo 'Bitte ein Passwort angeben.<br>';
         $error = true;
     }
     if($passwort != $passwort2) {
-        echo 'Die Passwörter müssen übereinstimmen<br>';
+        echo 'Die Passwörter müssen übereinstimmen.<br>';
         $error = true;
     }
     
@@ -54,7 +54,7 @@ if(isset($_GET['register'])) {
             $user = $statement->fetch(PDO::FETCH_ASSOC);
 
             if ($user) {
-                echo 'Diese E-Mail-Adresse ist bereits vergeben<br>';
+                echo 'Diese E-Mail-Adresse ist bereits vergeben.<br>';
                 $error = true;
             }
             else {

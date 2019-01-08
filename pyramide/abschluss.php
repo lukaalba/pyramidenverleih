@@ -13,7 +13,7 @@ $search = $dbconn->prepare("SELECT * FROM kunde WHERE EMail = '$kunden_email'");
 $search->execute();
 $result = $search->fetch(PDO::FETCH_ASSOC);
 
-if (strlen($result) == 0)
+if (sizeof($result) == 0)
 {
 # Insert Kunde
 $arr_kunde = array('name' => $_POST['name'],

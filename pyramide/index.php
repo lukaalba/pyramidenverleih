@@ -8,7 +8,7 @@
         <script src="script.js"></script>
         <script src="search.js"></script>
     </head>
-    <body onload="currentSlide(1)">
+    <body onload="showSlides(1); initializeHeader('HomeTab');">
         <?php
 			session_start();
             require('header.php');

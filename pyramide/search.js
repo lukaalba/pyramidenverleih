@@ -32,7 +32,7 @@ var kat = document.getElementById("KatButton").innerHTML;
         xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200)
           {
-            document.getElementById("txtreco").innerHTML = this.responseText;
+            document.getElementById("txtreco").innerHTML = xmlhttp.responseText;
             document.getElementById("txtreco").style.display = "block";
           }
         };

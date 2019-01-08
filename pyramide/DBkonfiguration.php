@@ -20,8 +20,7 @@ define ( 'MYSQL_DATENBANK', 'Pyramidenverleih');
 
 // Stellt Verbindung zur Datenbank her
 try {
-
-$dbconn = new PDO('mysql:host='. MYSQL_HOST . ';dbname=' . MYSQL_DATENBANK, MYSQL_BENUTZER, MYSQL_KENNWORT);
+  $dbconn = new PDO('mysql:host='. MYSQL_HOST . ';dbname=' . MYSQL_DATENBANK, MYSQL_BENUTZER, MYSQL_KENNWORT);
 } catch  (PDOException $e) {
   print  "Error!: " . $e->getMessage() . "<br />";
 

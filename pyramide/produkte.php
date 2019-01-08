@@ -8,7 +8,7 @@
         <script src="script.js"></script>
         <script src="search.js"></script>
     </head>
-    <body>
+    <body onload="initializeHeader('ProdukteTab');">
         <?php
             require('header.php');
         ?>

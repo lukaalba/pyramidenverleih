@@ -42,29 +42,30 @@ if(isset($_GET['register'])) {
     
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) { 
-
+        // Überprüfe, ob E-Mail bereits von Gast verwendet wurde
         $statement = $dbconn->prepare("SELECT * FROM kunde WHERE email = :email");
         $result = $statement->execute(array('email' => $arr_kunde['email']));
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $gast = $statement->fetch(PDO::FETCH_ASSOC);
         
-        if($user !== false) {
+        if($gast) {
+            // Überprüfe, ob es für die E-Mail bereits ein Userkonto gibt
             $statement = $dbconn->prepare("SELECT * FROM users WHERE kundenid = :user");
-            $result = $statement->execute(array('user' => $user['ID']));
-            $kunde = $statement->fetch(PDO::FETCH_ASSOC);
+            $result = $statement->execute(array('user' => $gast['ID']));
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-            if ($kunde !== false) {
+            if ($user) {
                 echo 'Diese E-Mail-Adresse ist bereits vergeben<br>';
                 $error = true;
             }
             else {
-                $arr_kunde += array('id' => $user['ID']);
+                $arr_kunde += array('id' => $gast['ID']);
                 $statement = $dbconn->prepare("UPDATE kunde SET name = :name, vorname = :vorname, plz = :plz, ort = :ort, strasse = :strasse, email = :email, telefon = :telefon WHERE id = :id");
                 $result = $statement->execute($arr_kunde);
                 if (!$result) {
                     echo 'Entschuldigung. Es gab einen Fehler beim Anlegen Ihres Benutzers. Bitte kontaktieren Sie uns.';
                     $error = true;
                 } else {
-                $id = $user['ID'];
+                $id = $gast['ID'];
                 }
             }
         }

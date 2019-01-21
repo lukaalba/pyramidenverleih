@@ -205,10 +205,10 @@ header a {
 .hideHeader {
   animation-name: slideUp;
   animation-duration: 1s;
-  transform: translateY(-100%;);
+  transform: translateY(-100%);
   -webkit-animation-name: slideUp;
   -webkit-animation-duration: 1s;
-  -webkit-transform: translateY(-100%;);
+  -webkit-transform: translateY(-100%);
 }
 
 @keyframes slideUp {
@@ -216,7 +216,7 @@ header a {
     transform: translateY(0%);
   }
   to {
-    transform: translateY(100%);
+    transform: translateY(100%;);
   }
 }
 
@@ -225,7 +225,7 @@ header a {
     -webkit-transform: translateY(0%);
   }
   to {
-    -webkit-transform: translateY(100%);
+    -webkit-transform: translateY(100%;);
   }
 }
 /* Ende Such-Box */
